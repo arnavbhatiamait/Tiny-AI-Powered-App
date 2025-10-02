@@ -11,22 +11,23 @@ from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.agents import Tool
-from langchain_ollama import ChatOllama
+# from langchain_ollama import ChatOllama
 # import google.generativeai as genai
 def get_ollama_models():
-    try:
-        result = subprocess.run(['ollama', 'list'], capture_output=True, text=True, check=True)
-        lines = result.stdout.strip().split('\n')
-        models = []
-        for line in lines[1:]:
-            parts = line.split()
-            if parts:
-                models.append(parts[0])
-        return models
-    except subprocess.CalledProcessError as e:
-        print("Error running 'ollama list':", e)
-        print("Output:", e.stdout)
-        print("Error Output:", e.stderr)
+    pass
+    # try:
+    #     result = subprocess.run(['ollama', 'list'], capture_output=True, text=True, check=True)
+    #     lines = result.stdout.strip().split('\n')
+    #     models = []
+    #     for line in lines[1:]:
+    #         parts = line.split()
+    #         if parts:
+    #             models.append(parts[0])
+    #     return models
+    # except subprocess.CalledProcessError as e:
+    #     print("Error running 'ollama list':", e)
+    #     print("Output:", e.stdout)
+    #     print("Error Output:", e.stderr)
 
 def get_all_groq_models(api_key: str) -> list:
     url = "https://api.groq.com/openai/v1/models"
@@ -95,7 +96,7 @@ def sidebar():
         model_option = None
         openai_api_key = " "
         model_list = [
-            "Ollama",
+            # "Ollama",
                        "Open AI", "Groq", "Gemini"]
         model = st.selectbox("Select Model", model_list)
 
@@ -112,10 +113,10 @@ def sidebar():
             else:
                 st.warning("enter API Key")
 
-        elif model == "Ollama":
-            ollama_list = get_ollama_models()
-            model_option = st.selectbox("Select AI Model", ollama_list)
-            llm = ChatOllama(model=model_option, verbose=1, temperature=0.1)
+        # elif model == "Ollama":
+        #     ollama_list = get_ollama_models()
+        #     model_option = st.selectbox("Select AI Model", ollama_list)
+        #     llm = ChatOllama(model=model_option, verbose=1, temperature=0.1)
 
         elif model == "Groq":
             groqapi_key = st.text_input("Enter your Groq API key", type="password")
