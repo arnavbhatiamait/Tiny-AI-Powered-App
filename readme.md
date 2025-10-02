@@ -1,6 +1,6 @@
 
 # 🤖 Tiny AI-Powered App: Q&A Bot with Streamlit
-
+## Video Link : [TinyAI](https://www.youtube.com/watch?v=3bHTJk03FO0)
 ## 🎯 Project Overview
 This repository contains a simple, AI-powered application developed as a solution to the intern assignment.  
 The implemented project is an **AI Q&A Bot**.
