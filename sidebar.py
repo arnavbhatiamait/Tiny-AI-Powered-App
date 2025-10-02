@@ -12,7 +12,7 @@ from langchain_groq import ChatGroq
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.agents import Tool
 from langchain_ollama import ChatOllama
-import google.generativeai as genai
+# import google.generativeai as genai
 def get_ollama_models():
     try:
         result = subprocess.run(['ollama', 'list'], capture_output=True, text=True, check=True)
@@ -41,14 +41,53 @@ def get_all_groq_models(api_key: str) -> list:
         return []
 
 def get_all_gemini_models(api_key):
-    try:
-        genai.configure(api_key=api_key)
-        models = genai.list_models()
-        gemini_models = [model.name for model in models if "gemini" in model.name.lower()]
-        return gemini_models
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return []
+    
+        # genai.configure(api_key=api_key)
+        # models = genai.list_models()
+    #     
+        return ['gemini-1.5-pro-latest',
+    'gemini-1.5-pro-002',
+    'gemini-1.5-pro',
+    'gemini-1.5-flash-latest',
+    'gemini-1.5-flash',
+    'gemini-1.5-flash-002',
+    'gemini-1.5-flash-8b',
+    'gemini-1.5-flash-8b-001',
+    'gemini-1.5-flash-8b-latest',
+    'gemini-2.5-pro-preview-03-25',
+    'gemini-2.5-flash-preview-05-20',
+    'gemini-2.5-flash',
+    'gemini-2.5-flash-lite-preview-06-17',
+    'gemini-2.5-pro-preview-05-06',
+    'gemini-2.5-pro-preview-06-05',
+    'gemini-2.5-pro',
+    'gemini-2.0-flash-exp',
+    'gemini-2.0-flash',
+    'gemini-2.0-flash-001',
+    'gemini-2.0-flash-exp-image-generation',
+    'gemini-2.0-flash-lite-001',
+    'gemini-2.0-flash-lite',
+    'gemini-2.0-flash-preview-image-generation',
+    'gemini-2.0-flash-lite-preview-02-05',
+    'gemini-2.0-flash-lite-preview',
+    'gemini-2.0-pro-exp',
+    'gemini-2.0-pro-exp-02-05',
+    'gemini-exp-1206',
+    'gemini-2.0-flash-thinking-exp-01-21',
+    'gemini-2.0-flash-thinking-exp',
+    'gemini-2.0-flash-thinking-exp-1219',
+    'gemini-2.5-flash-preview-tts',
+    'gemini-2.5-pro-preview-tts',
+    'gemini-2.5-flash-lite',
+    'gemini-embedding-exp-03-07',
+    'gemini-embedding-exp',
+    'gemini-embedding-001',
+    'gemini-2.5-flash-preview-native-audio-dialog',
+    'gemini-2.5-flash-exp-native-audio-thinking-dialog',
+    'gemini-2.0-flash-live-001',
+    'gemini-live-2.5-flash-preview',
+    'gemini-2.5-flash-live-preview']
+            
 
 def sidebar():
     with st.sidebar:
